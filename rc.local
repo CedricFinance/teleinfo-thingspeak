@@ -1,0 +1,1 @@
+su - pi -c "THINGSPEAK_KEY='XXXXXXXXXXXXXXXX' ~/raspberry-teleinfo/start.sh"
