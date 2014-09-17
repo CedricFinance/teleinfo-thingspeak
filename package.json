@@ -4,7 +4,8 @@
   "description": "Collect teleinfo data and forward them to a storage",
   "main": "collect.js",
   "dependencies": {
-    "teleinfo": "^0.2.0"
+    "teleinfo": "^0.2.0",
+    "thingspeakclient": "^0.4.0"
   },
   "devDependencies": {},
   "scripts": {
