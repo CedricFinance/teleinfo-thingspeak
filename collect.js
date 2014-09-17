@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var teleinfo = require("teleinfo");
 var util = require('util');
 var ThingSpeakClient = require('thingspeakclient');
