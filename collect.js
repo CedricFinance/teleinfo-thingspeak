@@ -13,7 +13,7 @@ function get_env(name) {
 }
 
 var key = get_env("THINGSPEAK_KEY");
-var channel_id = get_env("CHANNEL_ID");
+var channel_id = parseInt(get_env("CHANNEL_ID"));
 
 var client = new ThingSpeakClient();
 client.attachChannel(channel_id, { writeKey: key });
