@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 var teleinfo = require("teleinfo");
-var util = require('util');
 var ThingSpeakClient = require('thingspeakclient');
 
 function get_env(name) {
@@ -28,12 +27,12 @@ trameEvents.on('tramedecodee', function (data) {
   var currentDate = new Date();
   if (!lastSent || ((currentDate - lastSent) > 15 * 1000)) {
     client.updateChannel(channel_id, consommation);
-    console.log(util.inspect(data));
+    console.log(data);
     lastSent = currentDate;
   } 
 });
 
 trameEvents.on('error', function (err) {
-	console.log(util.inspect(err));
+	console.log(err);
 });
 
