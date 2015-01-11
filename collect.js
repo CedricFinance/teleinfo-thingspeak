@@ -29,7 +29,8 @@ function can_send_metrics(previous) {
 
 trameEvents.on('tramedecodee', function (data) {
   if (can_send_metrics(lastSent)) {
-    var consommation = { field1: data.HCHC, field2: data.HCHP, field3: data.IINST, field4: data.PAPP}
+    var memUsage = process.memoryUsage();
+    var consommation = { field1: data.HCHC, field2: data.HCHP, field3: data.IINST, field4: data.PAPP, field5: memUsage.heapUsed}
     client.updateChannel(channel_id, consommation);
     console.log(data);
     lastSent = new Date();
