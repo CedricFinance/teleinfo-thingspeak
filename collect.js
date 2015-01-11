@@ -22,13 +22,17 @@ var trameEvents = teleinfo("/dev/ttyAMA0");
 
 var lastSent;
 
-trameEvents.on('tramedecodee', function (data) {
-  var consommation = { field1: data.HCHC, field2: data.HCHP, field3: data.IINST, field4: data.PAPP}
+function can_send_metrics(previous) {
   var currentDate = new Date();
-  if (!lastSent || ((currentDate - lastSent) > 15 * 1000)) {
+  return !previous || ((currentDate - previous) > 15 * 1000); 
+}
+
+trameEvents.on('tramedecodee', function (data) {
+  if (can_send_metrics(lastSent)) {
+    var consommation = { field1: data.HCHC, field2: data.HCHP, field3: data.IINST, field4: data.PAPP}
     client.updateChannel(channel_id, consommation);
     console.log(data);
-    lastSent = currentDate;
+    lastSent = new Date();
   } 
 });
 
